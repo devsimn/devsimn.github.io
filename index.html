@@ -7,7 +7,6 @@
     <title>Cube Art Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -16,26 +15,19 @@
             color: #fff;
             line-height: 1.6;
         }
-
-        /* Header Styling */
         header {
-            padding: 20px 40px; /* Less padding for minimalistic look */
-            text-align: left; /* Align the text to the left */
+            padding: 20px 40px;
+            text-align: left;
             position: relative;
-            overflow: hidden;
         }
-
         header h1 {
             font-family: 'Roboto', sans-serif;
-            font-size: 2rem; /* Slightly smaller font size */
-            letter-spacing: 1px; /* Reduced letter-spacing */
+            font-size: 2rem;
+            letter-spacing: 1px;
             font-weight: normal;
-            text-transform: none;
             color: #fff;
-            margin: 0; /* Remove any default margin */
+            margin: 0;
         }
-
-        /* Gallery Container */
         .gallery-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -44,7 +36,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -53,72 +44,35 @@
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
         }
-
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-
-        /* Hover effect on images */
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-
-        /* Footer Styling */
         .footer {
             text-align: center;
-            background-color: #101010;
             padding: 50px 20px;
-            position: relative;
-            width: 100%;
             margin-top: 50px;
         }
-
-        .footer p {
-            margin: 20px 0;
-            font-size: 1.2rem;
-        }
-
         .footer a {
-            color: #fff;
-            font-size: 1.5rem;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 15px;
-            border: 2px solid #fff;
-            border-radius: 30px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
+            color: #4da6ff;
+            font-size: 1.2rem;
+            text-decoration: underline;
         }
-
-        .footer a:hover {
-            background-color: #fff;
-            color: #101010;
-        }
-
-        /* Footer Responsive Adjustment */
         @media (max-width: 600px) {
-            .footer p {
-                font-size: 1rem;
-            }
-
-            .footer a {
-                font-size: 1.2rem;
-            }
-
             .gallery-container {
                 grid-template-columns: 1fr 1fr;
             }
         }
-
         @media (max-width: 900px) {
             .gallery-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-
         @media (max-width: 1200px) {
             .gallery-container {
                 grid-template-columns: repeat(4, 1fr);
@@ -128,14 +82,12 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <h1>Cube Art Portfolio</h1>
     </header>
 
-    <!-- Gallery Section -->
     <div class="gallery-container">
-        <!-- Gallery images (replace with your actual images) -->
+        <!-- Gallery images -->
         <div class="gallery-item"><img src="image1.jpg" alt="Artwork 1"></div>
         <div class="gallery-item"><img src="image2.jpg" alt="Artwork 2"></div>
         <div class="gallery-item"><img src="image3.jpg" alt="Artwork 3"></div>
@@ -168,10 +120,9 @@
         <div class="gallery-item"><img src="image30.jpg" alt="Artwork 30"></div>
     </div>
 
-    <!-- Footer Section -->
     <div class="footer">
-        <p>Follow me on <a href="https://www.instagram.com/patricksartistry" target="_blank">Instagram</a></p>
-        <p>Contact me at: <a href="mailto:cube@email.com">cube@email.com</a></p>
+        <a href="https://www.instagram.com/patricksartistry" target="_blank">Instagram</a><br><br>
+        <a href="mailto:cube@email.com">cube@email.com</a>
     </div>
 
 </body>
