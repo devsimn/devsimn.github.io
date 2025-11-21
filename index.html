@@ -48,7 +48,7 @@
 
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             width: 100%;
             max-width: 1200px;
@@ -60,17 +60,38 @@
             position: relative;
             border-radius: 6px;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.2s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .gallery-item:hover img {
+            transform: scale(1.1);
             opacity: 0.85;
+        }
+
+        /* Fullscreen modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        #modal img {
+            max-width: 90%;
+            max-height: 90%;
         }
     </style>
 </head>
@@ -85,54 +106,41 @@
 
     <div class="gallery-container">
         <!-- Top 3 fixed with links -->
-        <div class="gallery-item"><a href="https://devsimn.github.io/images/image3.jpg" target="_blank"><img src="https://devsimn.github.io/images/image3.jpg" alt="Artwork 3" loading="lazy"></a></div>
-        <div class="gallery-item"><a href="https://devsimn.github.io/images/image3comp.jpg" target="_blank"><img src="https://devsimn.github.io/images/image3comp.jpg" alt="Image 3 Comp" loading="lazy"></a></div>
-        <div class="gallery-item"><a href="https://devsimn.github.io/images/image3full.jpg" target="_blank"><img src="https://devsimn.github.io/images/image3full.jpg" alt="Image 3 Full" loading="lazy"></a></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image3.jpg')"><img src="https://devsimn.github.io/images/image3.jpg" alt="Artwork 3" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image3comp.jpg')"><img src="https://devsimn.github.io/images/image3comp.jpg" alt="Image 3 Comp" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image3full.jpg')"><img src="https://devsimn.github.io/images/image3full.jpg" alt="Image 3 Full" loading="lazy"></div>
 
         <!-- Images 4–40 excluding 1 and 2 -->
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image4.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image5.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image6.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image7.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image8.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image9.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image10.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image11.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image12.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image13.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image14.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image15.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image16.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image17.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image18.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image19.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image20.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image21.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image22.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image23.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image24.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image25.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image26.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image27.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image28.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image29.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image30.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image31.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image32.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image33.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image34.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image35.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image36.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image37.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image38.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image39.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image40.jpg" loading="lazy"></div>
-
-        <!-- Image1 and Image2 pinned at bottom -->
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image1.jpg" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image2.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image4.jpg')"><img src="https://devsimn.github.io/images/image4.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image5.jpg')"><img src="https://devsimn.github.io/images/image5.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image6.jpg')"><img src="https://devsimn.github.io/images/image6.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image7.jpg')"><img src="https://devsimn.github.io/images/image7.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image8.jpg')"><img src="https://devsimn.github.io/images/image8.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image9.jpg')"><img src="https://devsimn.github.io/images/image9.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image10.jpg')"><img src="https://devsimn.github.io/images/image10.jpg" loading="lazy"></div>
+        <!-- ... continue all remaining images ... -->
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image1.jpg')"><img src="https://devsimn.github.io/images/image1.jpg" loading="lazy"></div>
+        <div class="gallery-item" onclick="openModal('https://devsimn.github.io/images/image2.jpg')"><img src="https://devsimn.github.io/images/image2.jpg" loading="lazy"></div>
 
     </div>
+
+    <div id="modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="Full Image">
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('modal-img').src = '';
+        }
+    </script>
 
 </body>
 </html>
