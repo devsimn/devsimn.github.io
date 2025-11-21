@@ -6,118 +6,194 @@
     <meta name="description" content="Artist Portfolio">
     <title>Cube Art Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0b0b0b;
+            background-color: #101010;
             color: #fff;
             line-height: 1.6;
         }
 
-        /* Top-left title + links */
         .top-left {
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 1000;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 10;
         }
 
         .top-left h1 {
-            margin: 0 0 8px 0;
-            font-size: 1.6rem;
-            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            font-size: 1.5rem;
         }
 
-        .top-left a {
-            color: #4da3ff;
-            text-decoration: none;
-            font-size: 1rem;
-            display: block;
-            margin-top: 5px;
+        .top-left a, .top-left span {
+            color: #5fa8ff;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            transition: opacity 0.2s;
         }
 
-        /* Add breathing room on mobile */
-        @media (max-width: 600px) {
-            .top-left {
-                left: 12px;
-                top: 12px;
-            }
+        .top-left a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
-        /* Gallery */
         .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 140px auto 40px; /* leave space for top-left text */
-            padding: 0 10px;
-        }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
         .gallery-item {
             position: relative;
-            border-radius: 6px;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.2s ease; /* no zoom */
+            transition: transform 0.3s ease;
+            loading: lazy;
         }
 
         .gallery-item:hover img {
-            opacity: 0.85; /* simple hover effect */
+            transform: scale(1.1);
+        }
+
+        #imageModal {
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.9);
+            justify-content:center;
+            align-items:center;
+            z-index:9999;
+        }
+
+        #modalImg {
+            max-width:90%;
+            max-height:90%;
+            border-radius:10px;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .top-left {
+                position: static;
+                flex-direction: row;
+                gap: 15px;
+                margin-bottom: 20px;
+                padding-left: 15px; /* added padding on mobile */
+            }
+            .gallery-container {
+                margin-top: 0;
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .top-left {
+                flex-direction: column;
+                gap: 5px;
+                text-align: left;
+                padding-left: 10px; /* added slight padding */
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Top-left title + links -->
     <div class="top-left">
         <h1>Cube Art Portfolio</h1>
         <a href="https://www.instagram.com/patricksartistry" target="_blank">Instagram</a>
-        <p style="margin: 5px 0 0 0;">cube@email.com</p>
+        <span>cube@email.com</span>
     </div>
 
-    <!-- Gallery (1–21) -->
     <div class="gallery-container">
-
-        <!-- Images 1–21 -->
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image1.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image2.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image3.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image4.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-
-        <!-- 5–21 -->
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image5.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image6.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image7.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image8.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image9.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image10.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image11.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image12.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image13.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image14.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image15.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image16.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image17.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image18.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image19.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-        <div class="gallery-item"><img src="https://devsimn.github.io/images/image20.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <!-- Images 1-21 from your GitHub Pages. Missing ones will fall back to image1 -->
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image1.jpg" alt="Artwork 1" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image2.jpg" alt="Artwork 2" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image3.jpg" alt="Artwork 3" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image4.jpg" alt="Artwork 4" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image5.jpg" alt="Artwork 5" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image6.jpg" alt="Artwork 6" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image7.jpg" alt="Artwork 7" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image8.jpg" alt="Artwork 8" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image9.jpg" alt="Artwork 9" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image10.jpg" alt="Artwork 10" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image11.jpg" alt="Artwork 11" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image12.jpg" alt="Artwork 12" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image13.jpg" alt="Artwork 13" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image14.jpg" alt="Artwork 14" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image15.jpg" alt="Artwork 15" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image16.jpg" alt="Artwork 16" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image17.jpg" alt="Artwork 17" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image18.jpg" alt="Artwork 18" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image19.jpg" alt="Artwork 19" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image20.jpg" alt="Artwork 20" loading="lazy" onerror="this.onerror=null;this.src='https://devsimn.github.io/images/image1.jpg'"></div>
         <div class="gallery-item"><img src="https://devsimn.github.io/images/image21.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
-
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image22.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image23.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image24.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image25.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image26.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image27.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image28.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image29.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image30.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image31.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image32.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image33.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image34.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image35.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image36.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image37.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image38.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image39.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
+        <div class="gallery-item"><img src="https://devsimn.github.io/images/image40.jpg" onerror="this.src='https://devsimn.github.io/images/image1.jpg'"></div>
     </div>
+
+    <div id="imageModal">
+        <img id="modalImg" src="">
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const images = document.querySelectorAll('.gallery-item img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>
